@@ -10,7 +10,6 @@ import nus.iss.tfip.pafworkshop29.Constants;
 
 @Data
 public class Order implements Constants {
-    private String id;
     private String name;
     private String email;
     private Date deliveryDate;
@@ -18,7 +17,6 @@ public class Order implements Constants {
 
     public Document toDocument() {
         Document doc = new Document();
-        doc.put(FIELD_ID, this.getId());
         doc.put(FIELD_NAME, this.getName());
         doc.put(FIELD_EMAIL, this.getEmail());
         doc.put(FIELD_DELIVERYDATE, this.getDeliveryDate());
