@@ -1,0 +1,9 @@
+{
+    "name": "customerName",
+    "email": "customerEmail",
+    "deliveryDate": "2023-02-16",
+    "lineItems": [
+        { "item": "itemName1", "quantity": 1 },
+        { "item": "itemName2", "quantity": 12 }
+    ]
+}
