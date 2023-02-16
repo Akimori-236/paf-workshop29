@@ -2,7 +2,6 @@ package nus.iss.tfip.pafworkshop29.controller;
 
 import java.util.Map;
 
-import org.bson.json.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.json.Json;
+import jakarta.json.JsonObject;
 import nus.iss.tfip.pafworkshop29.model.Order;
 import nus.iss.tfip.pafworkshop29.service.OrderService;
 
@@ -30,19 +30,24 @@ public class OrderController {
         // System.out.println(order);
         String response = orderSvc.insertOrder(order);
 
-
         System.out.println("RESPONSE >>> " + response);
         if (response.isBlank() || response.isEmpty()) {
-            // JsonObject json = Json.createObjectBuilder().add("id", response).build();
+            JsonObject json = Json.createObjectBuilder().add("id", response)
+                    .add("text", "Error: Invalid form entries").build();
+            System.out.println(json.toString());
             return ResponseEntity
                     .status(HttpStatus.NOT_ACCEPTABLE)
                     .contentType(MediaType.APPLICATION_JSON)
-                    .body(response);
+                    .body(json.toString());
+        } else {
+            JsonObject json = Json.createObjectBuilder().add("id", response)
+                    .add("text", "Order successfully recorded").build();
+            System.out.println(json.toString());
+            return ResponseEntity
+                    .status(HttpStatus.CREATED)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .body(json.toString());
         }
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(response);
     }
 
 }
