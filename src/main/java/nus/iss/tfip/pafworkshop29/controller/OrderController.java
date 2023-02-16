@@ -47,13 +47,10 @@ public class OrderController {
                                         .add("message", "Order successfully recorded")
                                         .build();
                         System.out.println(json.toString());
-                        String lol = """
-                                {"orderId":"HELLO WORLD","message":"Order successfully recorded"}
-                                        """;
                         return ResponseEntity
                                         .status(HttpStatus.CREATED)
                                         .contentType(MediaType.APPLICATION_JSON)
-                                        .body(lol);
+                                        .body(json.toString());
                 }
         }
 }
