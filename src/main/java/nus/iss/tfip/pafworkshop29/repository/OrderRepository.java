@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import nus.iss.tfip.pafworkshop29.Constants;
-import nus.iss.tfip.pafworkshop29.model.Order;
 
 @Repository
 public class OrderRepository implements Constants{
