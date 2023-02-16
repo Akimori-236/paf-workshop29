@@ -14,8 +14,8 @@ public class OrderRepository implements Constants{
     @Autowired
     private MongoTemplate template;
 
-    public Document insertOrder(Order order) {
-        Document doc = template.insert(Order.class, COLLECTION_ORDERS);
+    public Document insertOrder(Document order) {
+        Document doc = template.insert(order, COLLECTION_ORDERS);
         return doc;
     }
 }
